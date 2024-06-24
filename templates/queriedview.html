@@ -1,0 +1,70 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>View country details!</h1>
+        <ul>
+            {% for country in countries %}
+                <li>{{ country }}</li>
+            {% endfor %}
+        </ul>
+</body>
+</html> -->
+<!-- queriedview.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queried Data</title>
+    <style>
+        /* Add any desired CSS styles for your table */
+    </style>
+</head>
+<body>
+    <h2>Queried Data</h2>
+
+    {% if records %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Continent</th>
+                    <th>GDP</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                    <tr>
+                        <td>{{ record.country_id }}</td>
+                        <td>{{ record.country_name }}</td>
+                        <td>{{ record.continent }}</td>
+                        <td>{{ record.gdp }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No records found</p>
+    {% endif %}
+
+    <div id="flashed-messages">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div>
+              {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+              {% endfor %}  
+           </div>
+          
+          {% endif %}
+        {% endwith %}
+
+
+</body>
+</html>

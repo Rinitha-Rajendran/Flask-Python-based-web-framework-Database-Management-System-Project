@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .error-message {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        header {
+            text-align: center;
+            margin-top: 5px;
+        }
+    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header><h2>DELETE DATA</h2></header>
+    <br>
+    <br>
+
+    <!-- Your form or other content -->
+    <div>
+        <form id="myForm" method="post" action="{{ url_for('deleted_data') }}">
+            <label for="country_name">Country Name:</label>
+            <input type="text" id="country_name" name="country_name" required>
+            <datalist id="langList">
+                {% for country in countries %}
+                    <option value="{{ country }}">
+                {% endfor %}
+            </datalist>
+            <br><br>
+            <div>
+            <input type="submit" value="Delete">
+            <div id="errorMessage" class="error-message"></div>
+            </div>
+        </form>
+    </div>
+    <br>
+    
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            {% if category == 'error' %}
+                <p class="error-message">{{ message }}</p>
+            {% elif category == 'success' %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% else %}
+                <p>{{ message }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+</body>
+</html>

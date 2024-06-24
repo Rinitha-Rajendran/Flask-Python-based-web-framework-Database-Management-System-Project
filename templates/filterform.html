@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: row;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+        .alert-danger {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: #d9534f;
+            margin-top: 8px;
+        }  
+
+        
+
+
+    </style>
+</head>
+<div>
+    <h2>FILTER DATA</h2>
+     <br>
+     <br>
+
+
+<!-- Your form or other content -->
+<div>
+    <form id="myForm" method="post" action="{{ url_for('filtered_data') }}">
+
+        <label for="country_name">Countries with gdp lower than given value:</label>
+        <input type="text" id="lower" name="lower">
+
+        <label for="country_name">Countries wih gdp higher than given value:</label>
+        <input type="text" id="upper" name="upper">
+
+        
+        <input type="submit" value="Filter">
+        <!-- <button type="button" onclick="submitForm()">Submit</button> -->
+
+        <div id="errorMessage" class="error-message"></div>
+    </form>
+</div>
+    <br>
+
+    <!-- Display flashed messages -->
+ <div id="flashed-messages">
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div>
+      {% for message in messages %}
+        <div class="alert alert-success">{{ message }}</div>
+      {% endfor %}  
+   </div>
+  
+  {% endif %}
+{% endwith %}
+</div>
+</div>
+</body>
+</html>

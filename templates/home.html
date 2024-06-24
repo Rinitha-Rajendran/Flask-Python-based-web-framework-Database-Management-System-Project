@@ -1,0 +1,119 @@
+{% extends 'layout.html' %}
+  
+{% block title %}ChangedHome{% endblock %}
+  
+{% block content %}
+
+<div>
+    
+<center>
+    
+    <h1 class="h2">TABLES</h1>
+    <p>Welcome back, {{ username }}!</p>
+
+    <form>
+        <!-- Autocomplete input field -->
+        <input type="text" id="language" name="language" autocomplete="off" list="langList">
+        <datalist id="langList">
+            {% for country in countries %}
+                <option value="{{ country }}">
+            {% endfor %}
+        </datalist>
+    </form>
+     
+    <!-- <input type="text" id="tags"> -->
+    <br><br>
+    <div class="btn-group" role="group" aria-label="Basic example"></div>
+    <button class="btn btn-primary" onclick="window.location.href='{{ url_for('view_data') }}'" >VIEW</button>
+    <button class="btn btn-primary" onclick="window.location.href='{{ url_for('insert_data') }}'" >INSERT</button>
+    <button class="btn btn-primary" onclick="window.location.href='{{ url_for('update_data') }}'" >UPDATE</button>
+    <button class="btn btn-primary" onclick="window.location.href='{{ url_for('delete_data') }}'" >DELETE</button>
+    <button class="btn btn-primary" onclick="window.location.href='{{ url_for('query_data') }}'" >QUERY</button>
+    <button class="btn btn-primary" onclick="window.location.href='{{ url_for('filter_data') }}'" >FILTER</button>
+    
+        
+</center> 
+</div> 
+ {% endblock %}
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+         
+        #a{grid-area:a1;}
+        #b{grid-area:b1;}
+        #c{grid-area:c1;}
+        #d{grid-area:d1;}
+        #e{grid-area:e1;}
+
+        .maindiv{
+            display:flex;
+            flex-direction:row;
+            flex-wrap:wrap;
+
+            display:grid;
+            grid-template-areas:'a1 a1 a1 a1 a1 a1'
+                                 'b1 b1 b1 c1 c1 c1'
+                                 'd1 d1 d1 e1 e1 e1';
+            padding:20px;
+            margin:20px;
+            border-radius:20px;
+            background-color:crimson ; 
+            text-align:center;  
+            /background-image:url("https://pixels.com/images/homepage/ourProductsPrints001.jpg") ;
+            background-image:url("C:\Users\Rinitha Rajendran\OneDrive\Desktop\html-web dev\childhood.jpg");
+            background-size: cover;
+            box-shadow:2px 20px 20px black;
+        }
+           div{
+            /*flex box or column*/
+              padding:20px;
+              margin:20px;
+              /*top-left and bottomright*/
+            border-radius:120px 5%;
+            background-color:black; 
+            text-align:center; 
+            color:white; 
+            font-size:33px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+           }   
+           h2
+           {
+            color:darkblue;
+            font-size:20px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+           }             
+    </style>
+</head>
+<body>
+    <!-- Grid box -->
+    <!-- <div class="maindiv">
+    <!-- <div id="a">Home</div> -->
+    <!-- <div id="a">
+        <a href="bar.png"> -->
+       <!-- <img src="image.jpg" width="100px" height="100px"> */ -->
+    <!-- <h2>Image 1</h2>
+</a>
+    </div>
+    <div id="b"></div>
+    <div id="c">Details</div>
+    <div id="d">Events</div>
+    <div id="e">Workdone</div>
+        </div>
+    
+
+
+    
+
+</body> -->
+<!-- </html> -->
